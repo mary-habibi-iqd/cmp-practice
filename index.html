@@ -36,7 +36,7 @@
           ? dm.split("iqdeployment=")[1].split("&")[0]
           : "live";
       })();
-      const partner_site = "cdn_uncdn_mary_journal";
+      const partner_site = "cdn_mary_journal";
       IQSLoader(
         "https://s3.eu-central-1.amazonaws.com/prod.iqdcontroller.iqdigital/" +
           partner_site +
@@ -150,6 +150,12 @@
     <main>
       <section>
         <h2>Das ist der Inhalt der Webseite</h2>
+
+        <div
+          class="iqdcontainer"
+          data-placement="pos_header"
+          data-device="desktop"
+        ></div>
         <p>
           Some text to enable scrolling..........Lorem ipsum dolor sit amet
           consectetur adipisicing elit. Tempore quas corporis nulla unde
@@ -167,6 +173,22 @@
 
       <div class="ad-box">
         <div class="ad">Anzeige</div>
+
+        <div
+          class="iqdcontainer"
+          data-placement="pos_1"
+          data-device="desktop"
+        ></div>
+        <div
+          class="iqdcontainer"
+          data-placement="pos_2"
+          data-device="desktop"
+        ></div>
+        <div
+          class="iqdcontainer"
+          data-placement="pos_3"
+          data-device="desktop"
+        ></div>
       </div>
 
       <section>
@@ -226,9 +248,23 @@
         <div class="ad">Anzeige</div>
       </div>
     </main>
-
+    <div
+      class="iqdcontainer"
+      data-placement="pos_footer"
+      data-device="desktop"
+    ></div>
     <footer class="footer">
       <p>footer footer footer footer footer footer footer</p>
     </footer>
+
+    <script type="text/javascript">
+      AdController.finalize(); //Signalisiert dem AdController, dass keine weiteren AdCall-Aufrufe auf dieser Seite folgen
+
+      var IQDComplete = {
+        init: function () {
+          return true;
+        },
+      };
+    </script>
   </body>
 </html>
