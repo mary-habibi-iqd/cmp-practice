@@ -5,21 +5,143 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CMP</title>
+    <script type="text/javascript" src="cmp_init.js"></script>
+
+    <script>
+      window._sp_ = {
+        config: {
+          accountId: 692,
+          baseEndpoint: "https://cdn.privacy-mgmt.com",
+        },
+      };
+    </script>
+    <script src="https://cdn.privacy-mgmt.com/wrapperMessagingWithoutDetection.js"></script>
+    <!-- <script type="text/javascript" src="adcontroller.js"></script> -->
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Load -->
+    <script>
+      function IQSLoader(url) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        document.getElementsByTagName("head")[0].appendChild(script);
+      }
+
+      var iqd_mode = (function () {
+        var dm = window.location.href.toLowerCase();
+        return "sbxmary";
+        return dm.indexOf("iqdeployment=") > 1
+          ? dm.split("iqdeployment=")[1].split("&")[0]
+          : "live";
+      })();
+      const partner_site = "cdn_uncdn_mary_journal";
+      IQSLoader(
+        "https://s3.eu-central-1.amazonaws.com/prod.iqdcontroller.iqdigital/" +
+          partner_site +
+          "/" +
+          iqd_mode +
+          "/iqadcontroller.js.gz "
+      );
+    </script>
+
+    <!-- PROXY -->
+    <script>
+      (function () {
+        window.AdController = {
+          i: null, // page info
+          q: [], // render queue
+          f: false, // is finalized
+          s: false, // is staged
+          n: false, // is initialized
+          r: null, // ready function
+          c: [], // command queue
+          setPageInfo: function (i) {
+            window.AdController.i = i;
+          },
+          stage: function () {
+            window.AdController.s = true;
+          },
+          initialize: function () {
+            window.AdController.n = true;
+          },
+          render: function (n, c) {
+            window.AdController.q.push([n, c]);
+          },
+          finalize: function () {
+            window.AdController.f = true;
+          },
+          ready: function (callback) {
+            window.AdController.r = callback;
+          },
+          startLoadCycle: function () {
+            window.AdController.c.push(["startLoadCycle"]);
+          },
+          reload: function (p, t) {
+            window.AdController.c.push(["reload", p, t]);
+          },
+          reinitialize: function (i) {
+            window.AdController.c.push(["reinitialize", i]);
+          },
+        };
+      })();
+    </script>
+    <!-- CMSOBJECT -->
+    <script>
+      var cmsObject = {
+        $handle: "homepage", // artikel, index
+        level2: "",
+        level3: "",
+        level4: "",
+        isWrapperApp: false,
+        keywords: "homepage",
+        tma: "",
+        platform: "desktop",
+      };
+    </script>
+
+    <!-- INITIALIZE -->
+    <script>
+      if (!AdController._initialized) {
+        console.log("!AdController._initialized");
+        AdController.setPageInfo(cmsObject);
+        console.log("AdController.setPageInfo(cmsObject);");
+        try {
+          AdController.stage();
+          console.log("AdController.stage();");
+        } catch (e) {
+          console.log("catch (e)");
+          console.log(e);
+        }
+
+        AdController.initialize();
+        console.log("AdController.initialize();");
+      } else {
+        (function checkDOMReadyState(c) {
+          console.log("function checkDOMReadyState(c)");
+          console.log("c");
+          console.log({ c });
+
+          try {
+            if (AdController.getRenderController().isReady()) {
+              console.log("AdController.getRenderController().isReady()");
+              AdController.reinitialize(cmsObject);
+              console.log("AdController.reinitialize(cmsObject)");
+            }
+          } catch (e) {
+            console.log("catch (looping)");
+            if (c < 50) {
+              c++;
+              setTimeout(function () {
+                checkDOMReadyState(c);
+              }, 100);
+            }
+          }
+        })(0);
+      }
+    </script>
   </head>
-  <script type="text/javascript" src="cmp_init.js"></script>
-
-  <script>
-    window._sp_ = {
-      config: {
-        accountId: 692,
-        baseEndpoint: "https://cdn.privacy-mgmt.com",
-      },
-    };
-  </script>
-  <script src="https://cdn.privacy-mgmt.com/wrapperMessagingWithoutDetection.js"></script>
-  <script type="text/javascript" src="adcontroller.js"></script>
-
-  <link rel="stylesheet" href="styles.css" />
 
   <body>
     <header>
