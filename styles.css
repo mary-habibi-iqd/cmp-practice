@@ -20,7 +20,6 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .ad-box {
@@ -29,8 +28,7 @@ header {
   flex-direction: column;
   align-items: center;
   padding: 0;
-  border: 2px dashed #ccc;
-
+  border: 2px dashed red;
 }
 
 .ad {
@@ -52,4 +50,11 @@ header {
   padding: 15px;
   position: fixed;
   bottom: 0;
+}
+
+.iqdcontainer {
+  border: 2px solid aquamarine;
+  min-height: 8px;
+  width: 100%;
+  margin-top: 8px;
 }
