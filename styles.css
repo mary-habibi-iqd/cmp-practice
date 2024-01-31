@@ -6,6 +6,7 @@ main {
   max-width: 1000px;
   margin: auto;
   min-height: 3000px;
+  background-color: #ebebeb;
 }
 
 header {
@@ -53,7 +54,7 @@ header {
 }
 
 .iqdcontainer {
-  border: 2px solid aquamarine;
+  border: 2px solid #999;
   min-height: 8px;
   width: 100%;
   margin-top: 8px;
