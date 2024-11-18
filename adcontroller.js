@@ -76,7 +76,7 @@
   document.addEventListener("DOMContentLoaded", finalizeAdController);
 
   /**
-   * Dynamically loads a script by url
+   * Dynamically loads a script by url - 
    *
    * @param {string} url - The location of the script to load
    */
